@@ -1,0 +1,35 @@
+{
+    "name": "salernolabs/php-to-xml",
+    "description": "Simple class to convert PHP objects to XML, with tests.",
+    "keywords": [
+        "PHP",
+        "XML"
+    ],
+    "homepage": "http://www.salernolabs.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eric Salerno",
+            "email": "salernolabs@gmail.com",
+            "homepage": "http://www.ericsalerno.com/",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "salernolabs@gmail.com",
+        "issues": "https://github.com/ericsalerno/php-to-xml/issues",
+        "source": "https://github.com/ericsalerno/php-to-xml/releases"
+    },
+    "require":{
+        "php": ">=7.0"
+    },
+    "require-dev":{
+        "phpunit/phpunit": "5.7"
+    },
+    "autoload":{
+        "psr-4": {
+            "SalernoLabs\\PHPToXML\\": "src/",
+            "SalernoLabs\\Tests\\PHPToXML\\": "tests/"
+        }
+    }
+}
