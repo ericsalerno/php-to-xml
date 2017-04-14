@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <hello>world</hello>
+    <items>one</items>
+    <items>two</items>
+    <items>three</items>
+    <samples>
+        <sample1>1</sample1>
+        <sample2></sample2>
+        <sample3>I dunno!</sample3>
+    </samples>
+</data>
