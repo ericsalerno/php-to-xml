@@ -38,6 +38,8 @@ At this point, the value of $xml is expected to be a string with the following c
         </samples>
     </data>
 
+The converter is currently setup so multiple calls to convert() will return the last created data. Calls to setObjectData will clear the cache.
+
 ## Limitations
 
 I haven't added attribute or CDATA support in yet. It also doesn't collapse/remove empty nodes. Maybe later?
