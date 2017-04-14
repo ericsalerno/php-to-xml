@@ -1,5 +1,5 @@
 {
-    "name": "salernolabs/php-to-xml",
+    "name": "ericsalerno/php-to-xml",
     "description": "Simple class to convert PHP objects to XML, with tests.",
     "keywords": [
         "PHP",

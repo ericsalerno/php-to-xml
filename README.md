@@ -6,9 +6,9 @@ Yes, I'm fully aware of the existence of [SimpleXMLElement::asXML()](http://php.
 
 ## Usage
 
-First include the package in your project.
+First include the package in your project via composer.
 
-    composer require salernolabs/php-to-xml
+    composer require ericsalerno/php-to-xml
 
 An example usage would be something like this:
 
