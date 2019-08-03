@@ -1,4 +1,8 @@
-# php-to-xml
+# salernolabs/php-to-xml
+
+[![Latest Stable Version](https://poser.pugx.org/salernolabs/php-to-xml/v/stable)](https://packagist.org/packages/salernolabs/php-to-xml)
+[![License](https://poser.pugx.org/salernolabs/php-to-xml/license)](https://packagist.org/packages/salernolabs/php-to-xml)
+[![Build Status](https://travis-ci.com/salernolabs/php-to-xml.svg?branch=master)](https://travis-ci.org/salernolabs/php-to-xml)
 
 Just a simple class that converts a PHP object to XML, with tests, and no SimpleXML requirement.
 
@@ -23,7 +27,7 @@ An example usage would be something like this:
         ->convert();
 
 
-At this point, the value of $xml is expected to be a string with the following contents:
+At this point, the value of `$xml` is expected to be a string with the following contents:
 
     <?xml version="1.0" encoding="utf-8"?>
     <data>
@@ -42,4 +46,4 @@ The converter is currently setup so multiple calls to convert() will return the 
 
 ## Limitations
 
-I haven't added attribute or CDATA support in yet. It also doesn't collapse/remove empty nodes. Maybe later?
+I haven't added attribute or CDATA support in yet. It also doesn't collapse/remove empty nodes. Maybe later, pull requests welcome!

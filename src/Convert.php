@@ -1,4 +1,6 @@
 <?php
+namespace SalernoLabs\PHPToXML;
+
 /**
  * Convert a PHP Object to XML
  *
@@ -6,24 +8,22 @@
  * @subpackage PHPToXML
  * @author Eric
  */
-namespace SalernoLabs\PHPToXML;
-
 class Convert
 {
     /**
      * You can change the tab character here, the tests were done in PHPStorm so the tab is 4 spaces per psr
      */
-    const TAB_CHARACTER = '    ';
+    private const TAB_CHARACTER = '    ';
 
     /**
      * The XML version attribute
      */
-    const XML_VERSION = '1.0';
+    private const XML_VERSION = '1.0';
 
     /**
      * The XML encoding attribute
      */
-    const XML_ENCODING = 'utf-8';
+    private const XML_ENCODING = 'utf-8';
 
     /**
      * @var mixed
@@ -74,13 +74,12 @@ class Convert
 
     /**
      * Perform the conversion
-     *
      * @return string
-     * @throws \Exception
+     * @throws \Exception If data is empty
      */
     public function convert()
     {
-        //Cache result if you want to run it multiple times
+        // Memoize result if you want to run it multiple times
         if (!empty($this->output))
         {
             return $this->output;
@@ -102,12 +101,11 @@ class Convert
 
     /**
      * Convert a specific node to XML (ugh! recursion!)
-     *
-     * @param $data
-     * @param $nodeName
-     * @param $depth
+     * @param mixed $data The data being input
+     * @param string $nodeName The node's name
+     * @param int $depth The depth value for tabbing
      */
-    private function convertNodeToXML($data, $nodeName, $depth)
+    private function convertNodeToXML($data, string $nodeName, int $depth)
     {
         if (is_scalar($data))
         {
@@ -157,5 +155,4 @@ class Convert
             }
         }
     }
-
 }

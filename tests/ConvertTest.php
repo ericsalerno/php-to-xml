@@ -1,4 +1,9 @@
 <?php
+namespace SalernoLabs\Tests\PHPToXML;
+
+use PHPUnit\Framework\TestCase;
+use SalernoLabs\PHPToXML\Convert;
+
 /**
  * Convert PHP to XML Test
  *
@@ -6,21 +11,17 @@
  * @subpackage Tests
  * @author Eric Salerno
  */
-namespace SalernoLabs\Tests\PHPToXML;
-
-class ConvertTest extends \PHPUnit\Framework\TestCase
+class ConvertTest extends TestCase
 {
     /**
      * @param $input
      * @param $expectedOutput
-     * @covers \SalernoLabs\PHPToXML\Convert::convert
-     * @covers \SalernoLabs\PHPToXML\Convert::setObjectData
      * @throws \Exception
      * @dataProvider dataProviderForTestConversion
      */
     public function testConversion($input, $expectedOutput)
     {
-        $converter = new \SalernoLabs\PHPToXML\Convert();
+        $converter = new Convert();
 
         $output = $converter
             ->setObjectData($input)
@@ -42,7 +43,7 @@ class ConvertTest extends \PHPUnit\Framework\TestCase
         while (is_dir(__DIR__ . '/data/test' . $index))
         {
             $test = [
-                json_decode(file_get_contents(__DIR__ . '/data/test' . $index . '/input.json')),
+                unserialize(file_get_contents(__DIR__ . '/data/test' . $index . '/input.txt')),
                 file_get_contents(__DIR__ . '/data/test' . $index . '/output.xml')
             ];
             $output[] = $test;
@@ -55,8 +56,7 @@ class ConvertTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Because no one likes to be sold a false bill of goods.
-     * @covers \SalernoLabs\PHPToXML\Convert::convert
-     * @covers \SalernoLabs\PHPToXML\Convert::setObjectData
+     * @throws \Exception But shouldn't here
      */
     public function testReadmeSampleCode()
     {
@@ -65,12 +65,27 @@ class ConvertTest extends \PHPUnit\Framework\TestCase
         $object->items = ['one', 'two', 'three'];
         $object->samples = ['sample1'=>true, 'sample2'=>false, 'sample3'=>'I dunno!'];
 
-        $converter = new \SalernoLabs\PHPToXML\Convert();
+        $converter = new Convert();
         $xml = $converter
+            ->setRootNodeName('garbage')
             ->setObjectData($object)
             ->convert();
 
-        $this->assertEquals(file_get_contents(__DIR__ . '/data/sample/expected.txt'), $xml);
+        $expected = file_get_contents(__DIR__ . '/data/sample/expected.txt');
+        $this->assertEquals($expected, $xml);
+
+        // Run it again to cover our memoized value
+        $this->assertEquals($expected, $converter->convert());
     }
 
+    /**
+     * @throws \Exception When theres empty data
+     */
+    public function testEmptyData()
+    {
+        $this->expectException(\Exception::class);
+        $converter = new Convert();
+        $converter
+            ->convert();
+    }
 }

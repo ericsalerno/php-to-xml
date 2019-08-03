@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<data>
+<garbage>
     <hello>world</hello>
     <items>one</items>
     <items>two</items>
@@ -9,4 +9,4 @@
         <sample2></sample2>
         <sample3>I dunno!</sample3>
     </samples>
-</data>
+</garbage>
